@@ -1,8 +1,8 @@
 <?php
 
-$user_name=isset($_POST['user_name']) ?$_POST['user_name']:'';
-$mail_adress=isset($_POST['mail_adress']) ?$_POST['mail_adress']:'';
-$pass_word=isset($_POST['pass_word']) ?$_POST['pass_word']:'';
+$user_name = isset($_POST['user_name']) ?$_POST['user_name'] : '';
+$mail_adress = isset($_POST['mail_adress']) ?$_POST['mail_adress'] : '';
+$pass_word = isset($_POST['pass_word']) ?$_POST['pass_word'] : '';
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,7 +17,7 @@ $pass_word=isset($_POST['pass_word']) ?$_POST['pass_word']:'';
     <title>ユーザー登録</title>
   </head>
   <body>
-    <h1>ユーザーサイト</h1>
+    <h1>ユーザー登録</h1>
 
     <form method="POST" action="./check.php">
             <div class="row mb-3">
@@ -38,7 +38,7 @@ $pass_word=isset($_POST['pass_word']) ?$_POST['pass_word']:'';
                 <input type="password" class="form-control" id="pass"name="pass_word" value ="<?php echo $pass_word;?>">
                 </div>
             </div>
-            <button type= "submit" class="btn btn-primary">Sign in</button>
+            <button type= "submit" class="btn btn-primary">submit</button>
         </form>
     <!-- Optional JavaScript; choose one of the two! -->
 
