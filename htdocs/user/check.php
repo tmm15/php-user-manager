@@ -4,9 +4,9 @@ $mail_adress = isset($_POST['mail_adress']) ?$_POST['mail_adress'] : '';
 $pass_word = isset($_POST['pass_word']) ?$_POST['pass_word'] : '';
 
 $errors = [
-    'user_name'=>[] , 
-    'mail_adress'=>[] , 
-    'pass_word'=>[] , 
+    'user_name' => [] , 
+    'mail_adress' => [] , 
+    'pass_word' => [] , 
 ];
 if($user_name === "") {
     $errors['user_name'][] = "UserNameが未入力です。";
@@ -29,12 +29,13 @@ if($pass_word === "") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>ユーザー登録</title>
   </head>
   <body>
-    <h1>ユーザーサイト</h1>
+    <h1>ユーザー登録</h1>
     <?php if( !empty($errors['user_name'])  ||
               !empty($errors['mail_adress'])  ||
               !empty($errors['pass_word'])  )  { ?>
@@ -73,7 +74,7 @@ if($pass_word === "") {
            
         </form>
 
-    <?php }else{ ?>
+    <?php } else { ?>
         <form method="POST" action="./comp.php">
             <div class="row mb-3">
                 <label for="user_name" class="col-sm-2 col-form-label">User_Name</label>
