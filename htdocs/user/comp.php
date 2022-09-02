@@ -6,7 +6,7 @@ $pass_word = isset($_POST['pass_word']) ?$_POST['pass_word'] : '';
 $errors = [];
 try{
     // MySQLiコネクタを生成
-    $link = mysqli_connect('localhost','root','','test' );
+    $link = mysqli_connect('localhost', 'root', '', 'test' );
     // DBコネクションを確立
     if(!$link) {
         die('コネクションエラー');
@@ -15,9 +15,9 @@ try{
     //メールアドレスの重複チェック
     $query = "SELECT user_id FROM users WHERE mail_adress = ? LIMIT 1";
     $stmt = mysqli_prepare($link, $query);
-    mysqli_stmt_bind_param($stmt,'s', $mail_adress);
+    mysqli_stmt_bind_param($stmt, 's', $mail_adress);
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt,$district);
+    mysqli_stmt_bind_result($stmt, $district);
     mysqli_stmt_fetch($stmt);
     var_dump($district);
 
@@ -29,7 +29,7 @@ try{
    //メールアドレスが重複していなかった場合
    else{
      //ユーザー登録
-     $query = "INSERT INTO users(user_name , mail_adress , pass_word , create_dt , update_dt) VALUES(?,?,?,?,?)";
+     $query = "INSERT INTO users(user_name , mail_adress , pass_word , create_dt , update_dt) VALUES(? , ? , ? , ? , ?)";
      $stmt = mysqli_prepare($link, $query);
      //パスワードを不可逆に変換する
      $cry_pass_word = md5($pass_word);
@@ -57,7 +57,7 @@ try{
     <title>ユーザー登録</title>
   </head>
   <body>
-    <h1>ユーザーサイト</h1>
+    <h1>ユーザー登録</h1>
     <?php if( empty($errors) ) {  ?>
     <div class="alert alert-success" role="alert">
      登録完了
@@ -86,7 +86,7 @@ try{
             <input type="password" class="form-control" id="pass"name="pass_word" value ="<?php echo $pass_word;?>">
         </div>
      </div>
-     <button type= "submit" class="btn btn-primary">Sign in</button>
+     <button type= "submit" class="btn btn-primary">submit</button>
     </form>
     <?php } ?>
     
