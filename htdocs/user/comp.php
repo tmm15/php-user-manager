@@ -1,6 +1,6 @@
 <?php
 $user_name = isset($_POST['user_name']) ?$_POST['user_name'] : '';
-$mail_adress = isset($_POST['mail_adress']) ?$_POST['mail_adress'] : '';
+$mail_address = isset($_POST['mail_address']) ?$_POST['mail_address'] : '';
 $pass_word = isset($_POST['pass_word']) ?$_POST['pass_word'] : '';
 
 $errors = [];
@@ -13,9 +13,9 @@ try{
     }
 
     //メールアドレスの重複チェック
-    $query = "SELECT user_id FROM users WHERE mail_adress = ? LIMIT 1";
+    $query = "SELECT user_id FROM users WHERE mail_address = ? LIMIT 1";
     $stmt = mysqli_prepare($link, $query);
-    mysqli_stmt_bind_param($stmt, 's', $mail_adress);
+    mysqli_stmt_bind_param($stmt, 's', $mail_address);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $district);
     mysqli_stmt_fetch($stmt);
@@ -29,13 +29,13 @@ try{
    //メールアドレスが重複していなかった場合
    else{
      //ユーザー登録
-     $query = "INSERT INTO users(user_name , mail_adress , pass_word , create_dt , update_dt) VALUES(? , ? , ? , ? , ?)";
+     $query = "INSERT INTO users(user_name , mail_address  , pass_word , create_dt , update_dt) VALUES(? , ? , ? , ? , ?)";
      $stmt = mysqli_prepare($link, $query);
      //パスワードを不可逆に変換する
      $cry_pass_word = md5($pass_word);
      //現在日時を取得
      $now_dt = date("Y-m-d H:i:s");
-     mysqli_stmt_bind_param($stmt, 'sssss',$user_name , $mail_adress ,$cry_pass_word, $now_dt , $now_dt);
+     mysqli_stmt_bind_param($stmt, 'sssss',$user_name , $mail_address ,$cry_pass_word, $now_dt , $now_dt);
      mysqli_stmt_execute($stmt);
     }
     // DBコネクションを切断
@@ -75,9 +75,9 @@ try{
          </div>
         </div>
         <div class="row mb-3">
-         <label for="mail_adress" class="col-sm-2 col-form-label">Mail_Adress</label>
+         <label for="mail_address" class="col-sm-2 col-form-label">Mail_Address</label>
             <div class="col-sm-10">
-             <input type="mail" class="form-control" id="mail" name="mail_adress" value ="<?php echo $mail_adress;?>">
+             <input type="mail" class="form-control" id="mail" name="mail_address" value ="<?php echo $mail_address;?>">
             </div>
         </div>
      <div class="row mb-3">
